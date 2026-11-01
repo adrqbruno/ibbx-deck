@@ -46,7 +46,15 @@ body.idle #bar,body.idle #progress{opacity:0}
 #hint{position:fixed;top:16px;right:16px;color:#7d7d7a;font-size:12px;font-family:'Geist Mono',monospace;letter-spacing:.5px;z-index:10;transition:opacity .3s}
 body.idle #hint{opacity:0}
 @media (max-width:700px){#hint{display:none}#bar{bottom:12px}}
+/* entry animations */
+@keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@keyframes pop{0%{opacity:0;transform:translateY(24px) scale(.96)}100%{opacity:1;transform:none}}
+#stage .slide [data-a]{opacity:0}
+#stage .slide.active [data-a]{animation:rise .7s cubic-bezier(.2,.75,.2,1) both;animation-delay:calc(var(--a,0)*110ms + 150ms)}
+#stage .slide.active [data-a][style*="border-radius:16px"]{animation-name:pop}
+#grid [data-a]{opacity:1!important;animation:none!important}
 @media print{
+  .slide [data-a]{opacity:1!important;animation:none!important}
   @page{size:1920px 1080px;margin:0}
   html,body{overflow:visible;background:#fff;height:auto}
   #viewport{position:static;display:block}
@@ -54,7 +62,7 @@ body.idle #hint{opacity:0}
   .slide{position:relative;opacity:1!important;visibility:visible!important;break-after:page;page-break-after:always}
   #bar,#progress,#notes,#grid,#hint{display:none!important}
 }
-@media (prefers-reduced-motion:reduce){.slide,.slide.active{transition:none}}
+@media (prefers-reduced-motion:reduce){.slide,.slide.active{transition:none}#stage .slide [data-a]{opacity:1;animation:none!important}}
 </style>
 </head>
 <body>
@@ -77,38 +85,41 @@ body.idle #hint{opacity:0}
 </div>
 
 </section>
-<section class="slide" data-notes="Resumo para a fala: a tecnologia é forte, mas pouco conhecida fora da base de clientes. O trabalho da mídia paga é levar o tema às plantas certas, junto com o PR, e transformar essa atenção em reuniões." aria-label="Sumário executivo" id="summary" data-transition="fade" style="background:#fafaf9;color:#141414;font-family:'Geist', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
-<div style="display:flex;flex-direction:column;gap:16px">
+<section class="slide" data-notes="Resumo para a fala: a tecnologia é forte, mas pouco conhecida fora da base de clientes. O trabalho da mídia paga é levar o tema às plantas certas, junto com o PR, e transformar essa atenção em reuniões." aria-label="Sumário executivo" id="summary" data-transition="fade" style="background:#fafaf9;color:#141414;font-family:'Geist', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div data-a="0" style="display:flex;flex-direction:column;gap:16px">
 <p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;letter-spacing:3px;text-transform:uppercase;color:#7d7d7a">Contexto</p>
 <h2 style="font-size:64px;font-weight:600;line-height:1.1;letter-spacing:-1px">Sumário executivo</h2>
 </div>
-<div style="display:flex;flex-direction:row;gap:96px">
-<div style="width:720px;display:flex;flex-direction:column;gap:28px">
-<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#15803d">O que é a IBBX</p>
-<p style="font-size:30px;line-height:1.5;color:#3d3d3b">Uma empresa brasileira que transmite energia e dados pelo ar, sem cabos e sem baterias. Na indústria, a tecnologia aparece em sensores que acompanham a vibração e a temperatura das máquinas e ajudam a antecipar falhas antes que a produção pare.</p>
-<p style="font-size:26px;line-height:1.5;color:#62625f">O modelo combina hardware próprio com assinatura de software, e a venda é consultiva, para plantas industriais de grande porte.</p>
+<div style="display:flex;flex-direction:row;gap:56px">
+<div style="width:560px;display:flex;flex-direction:column;gap:28px">
+<p data-a="1" style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#15803d">O que é a IBBX</p>
+<p data-a="2" style="font-size:30px;line-height:1.5;color:#3d3d3b">Uma empresa brasileira que transmite energia e dados pelo ar, sem cabos e sem baterias. Na indústria, a tecnologia aparece em sensores que acompanham a vibração e a temperatura das máquinas e ajudam a antecipar falhas antes que a produção pare.</p>
+<p data-a="3" style="font-size:26px;line-height:1.5;color:#62625f;border-left:3px solid #15803d;padding:0px 0px 0px 24px">O modelo combina hardware próprio com assinatura de software, e a venda é consultiva, para plantas industriais de grande porte.</p>
 </div>
-<div style="flex:1;display:flex;flex-direction:column">
-<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#b4531a;padding:0px 0px 20px 0px">O desafio de gerar demanda</p>
-<div style="display:flex;flex-direction:row;gap:24px;padding:20px 0px;border-top:1px solid #dcdcd9">
-<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#9a9a97;width:48px">01</p>
-<p style="font-size:26px;line-height:1.4;color:#4b4b49;flex:1"><b style="color:#141414">Categoria nova.</b> Pouca gente procura uma solução que ainda não sabe que existe.</p>
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+<p data-a="4" style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;letter-spacing:2px;text-transform:uppercase;color:#b4531a">O desafio de gerar demanda</p>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+<div data-a="5" style="display:flex;flex-direction:column;gap:12px;background:#ffffff;border:1px solid #e6e6e3;border-radius:16px;padding:22px 24px">
+<div style="display:flex;flex-direction:row;gap:16px;align-items:center"><div style="width:44px;height:44px;border-radius:10px;background:#fbeee4;display:flex;align-items:center;justify-content:center"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b4531a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.6.5 1 1.2 1.1 2h5c.1-.8.5-1.5 1.1-2A6 6 0 0 0 12 3z"/></svg></div><h3 style="flex:1;font-size:28px;font-weight:600;line-height:1.2">Categoria nova</h3><p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#b9b9b6">01</p></div>
+<p style="font-size:24px;line-height:1.4;color:#5a5a57">Pouca gente procura uma solução que ainda não sabe que existe.</p>
 </div>
-<div style="display:flex;flex-direction:row;gap:24px;padding:20px 0px;border-top:1px solid #dcdcd9">
-<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#9a9a97;width:48px">02</p>
-<p style="font-size:26px;line-height:1.4;color:#4b4b49;flex:1"><b style="color:#141414">Compra complexa.</b> A decisão envolve manutenção, operações, TI e financeiro, num ciclo longo.</p>
+<div data-a="6" style="display:flex;flex-direction:column;gap:12px;background:#ffffff;border:1px solid #e6e6e3;border-radius:16px;padding:22px 24px">
+<div style="display:flex;flex-direction:row;gap:16px;align-items:center"><div style="width:44px;height:44px;border-radius:10px;background:#fbeee4;display:flex;align-items:center;justify-content:center"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b4531a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c.6-3 2.8-4.8 5.5-4.8s4.9 1.8 5.5 4.8"/><circle cx="17" cy="9" r="2.5"/><path d="M15.5 14.4c2.3.2 4.2 1.8 4.8 4.6"/></svg></div><h3 style="flex:1;font-size:28px;font-weight:600;line-height:1.2">Compra complexa</h3><p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#b9b9b6">02</p></div>
+<p style="font-size:24px;line-height:1.4;color:#5a5a57">Quatro áreas decidem juntas, num ciclo de venda longo.</p>
 </div>
-<div style="display:flex;flex-direction:row;gap:24px;padding:20px 0px;border-top:1px solid #dcdcd9">
-<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#9a9a97;width:48px">03</p>
-<p style="font-size:26px;line-height:1.4;color:#4b4b49;flex:1"><b style="color:#141414">Mercado disputado.</b> Manutenção preditiva já tem concorrentes fortes em busca e conteúdo.</p>
+<div data-a="7" style="display:flex;flex-direction:column;gap:12px;background:#ffffff;border:1px solid #e6e6e3;border-radius:16px;padding:22px 24px">
+<div style="display:flex;flex-direction:row;gap:16px;align-items:center"><div style="width:44px;height:44px;border-radius:10px;background:#fbeee4;display:flex;align-items:center;justify-content:center"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b4531a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></div><h3 style="flex:1;font-size:28px;font-weight:600;line-height:1.2">Mercado disputado</h3><p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#b9b9b6">03</p></div>
+<p style="font-size:24px;line-height:1.4;color:#5a5a57">Manutenção preditiva já tem concorrentes fortes em busca.</p>
 </div>
-<div style="display:flex;flex-direction:row;gap:24px;padding:20px 0px;border-top:1px solid #dcdcd9">
-<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#9a9a97;width:48px">04</p>
-<p style="font-size:26px;line-height:1.4;color:#4b4b49;flex:1"><b style="color:#141414">Prova antes da escala.</b> Cada venda começa com um piloto, então a mídia precisa chegar às plantas certas.</p>
+<div data-a="8" style="display:flex;flex-direction:column;gap:12px;background:#ffffff;border:1px solid #e6e6e3;border-radius:16px;padding:22px 24px">
+<div style="display:flex;flex-direction:row;gap:16px;align-items:center"><div style="width:44px;height:44px;border-radius:10px;background:#fbeee4;display:flex;align-items:center;justify-content:center"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b4531a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M12 3l2.4 1.7 2.9-.1.9 2.8 2.3 1.8-1 2.8 1 2.8-2.3 1.8-.9 2.8-2.9-.1L12 21l-2.4-1.7-2.9.1-.9-2.8-2.3-1.8 1-2.8-1-2.8 2.3-1.8.9-2.8 2.9.1z"/><path d="M8.8 12.2l2.2 2.2 4.2-4.6"/></svg></div><h3 style="flex:1;font-size:28px;font-weight:600;line-height:1.2">Prova antes da escala</h3><p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#b9b9b6">04</p></div>
+<p style="font-size:24px;line-height:1.4;color:#5a5a57">Cada venda começa com um piloto em plantas bem escolhidas.</p>
 </div>
-<div style="display:flex;flex-direction:row;gap:24px;padding:20px 0px;border-top:1px solid #dcdcd9;border-bottom:1px solid #dcdcd9">
-<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#9a9a97;width:48px">05</p>
-<p style="font-size:26px;line-height:1.4;color:#4b4b49;flex:1"><b style="color:#141414">Mídia paga do zero.</b> Sem histórico de campanhas, os custos reais ainda precisam ser medidos.</p>
+</div>
+<div data-a="9" style="display:flex;flex-direction:row;gap:24px;align-items:center;background:#141414;border-radius:16px;padding:22px 24px">
+<div style="width:44px;height:44px;border-radius:10px;background:#2a2a28;display:flex;align-items:center;justify-content:center"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f0a36b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M4 20V4M4 20h16"/><path d="M8 16v-4M12 16V8M16 16v-6"/></svg></div>
+<div style="flex:1;display:flex;flex-direction:column;gap:4px"><h3 style="font-size:28px;font-weight:600;line-height:1.2;color:#f4f4f2">Mídia paga do zero</h3><p style="font-size:24px;line-height:1.4;color:#c9c9c6">Sem histórico de campanhas, os custos reais ainda precisam ser medidos.</p></div>
+<p style="font-family:'Geist Mono', 'Courier New', monospace;font-size:24px;color:#7d7d7a">05</p>
 </div>
 </div>
 </div>
@@ -144,7 +155,7 @@ body.idle #hint{opacity:0}
 <div style="position:absolute;left:128px;right:128px;bottom:64px;display:flex;flex-direction:row;justify-content:space-between"><p style="font-size:24px;color:#9a9a97">AdRoq · Proposta de mídia paga digital · IBBX</p><p style="font-size:24px;color:#9a9a97">03</p></div>
 
 </section>
-<section class="slide" data-notes="Fontes públicas: Forbes Agro (jun/2024), Startups.com.br (CEO), Bloomberg Línea (Tractian). Os pontos &quot;a construir&quot; vêm do diagnóstico com a IBBX." aria-label="O que a IBBX já tem e o que começa do zero" id="context" data-transition="fade" style="display:flex; flex-direction:column; gap:40px; padding:128px 128px 160px; background:#fafaf9">
+<section class="slide" data-notes="Fontes públicas: Forbes Agro (jun/2024), Bloomberg Línea (Tractian). Os pontos &quot;a construir&quot; vêm do diagnóstico com a IBBX." aria-label="O que a IBBX já tem e o que começa do zero" id="context" data-transition="fade" style="display:flex; flex-direction:column; gap:40px; padding:128px 128px 160px; background:#fafaf9">
   <div style="display:flex; flex-direction:column; gap:16px">
     <p style="font-family:'Geist Mono', 'Courier New', monospace; font-size:24px; letter-spacing:3px; text-transform:uppercase; color:#7d7d7a">Ponto de partida</p>
     <h2 style="font-family:Geist, Arial, sans-serif; font-size:64px; font-weight:600; line-height:1.1; letter-spacing:-1px; color:#141414">O que a IBBX já tem e o que começa do zero</h2>
@@ -154,7 +165,6 @@ body.idle #hint{opacity:0}
       <p style="font-family:'Geist Mono', 'Courier New', monospace; font-size:24px; letter-spacing:2px; text-transform:uppercase; color:#15803d">Ativos</p>
       <p style="font-family:Geist, Arial, sans-serif; font-size:24px; line-height:1.4; color:#4b4b49"><span style="color:#141414"><b>Tecnologia patenteada.</b></span> Antiwire, sensores que captam energia do ambiente, sem cabo e sem bateria.</p>
       <p style="font-family:Geist, Arial, sans-serif; font-size:24px; line-height:1.4; color:#4b4b49"><span style="color:#141414"><b>Clientes de referência.</b></span> Maior base no sucroenergético, além de Nestlé, Unilever, Cutrale, Braskem, Votorantim, MWM e Embraer.</p>
-      <p style="font-family:Geist, Arial, sans-serif; font-size:24px; line-height:1.4; color:#4b4b49"><span style="color:#141414"><b>CEO conhecido no mercado.</b></span> André Penha, cofundador do QuintoAndar, é CEO desde out/2024.</p>
       <p style="font-family:Geist, Arial, sans-serif; font-size:24px; line-height:1.4; color:#4b4b49"><span style="color:#141414"><b>Concorrente principal.</b></span> A Tractian domina “manutenção preditiva” em busca e conteúdo.</p>
     </div>
     <div style="display:flex; flex-direction:column; gap:20px; flex:1; padding:36px; background:#f0f0ee; border-radius:16px">
@@ -647,14 +657,14 @@ body.idle #hint{opacity:0}
 <p style="font-size:28px;line-height:1.4;color:#62625f">O que precisamos da IBBX para colocar a busca no ar em 16/11.</p>
 </div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:0px 64px">
-<div style="display:flex;flex-direction:row;gap:20px;align-items:center;padding:20px 0px;border-top:1px solid #dcdcd9"><svg role="img" aria-label="Concluir" width="32" height="32" viewBox="0 0 24 24" style="flex:none"><path d="M4.5 12.5l5 5 10-11" fill="none" stroke="#15803d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><p style="font-size:24px;line-height:1.4;color:#3d3d3b">Aceite da proposta e escolha do cenário de media buy</p></div>
-<div style="display:flex;flex-direction:row;gap:20px;align-items:center;padding:20px 0px;border-top:1px solid #dcdcd9"><svg role="img" aria-label="Concluir" width="32" height="32" viewBox="0 0 24 24" style="flex:none"><path d="M4.5 12.5l5 5 10-11" fill="none" stroke="#15803d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><p style="font-size:24px;line-height:1.4;color:#3d3d3b">Preço de referência do piloto, mesmo provisório</p></div>
-<div style="display:flex;flex-direction:row;gap:20px;align-items:center;padding:20px 0px;border-top:1px solid #dcdcd9"><svg role="img" aria-label="Concluir" width="32" height="32" viewBox="0 0 24 24" style="flex:none"><path d="M4.5 12.5l5 5 10-11" fill="none" stroke="#15803d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><p style="font-size:24px;line-height:1.4;color:#3d3d3b">Acessos: domínio, site, LinkedIn da empresa e pagamento</p></div>
-<div style="display:flex;flex-direction:row;gap:20px;align-items:center;padding:20px 0px;border-top:1px solid #dcdcd9"><svg role="img" aria-label="Concluir" width="32" height="32" viewBox="0 0 24 24" style="flex:none"><path d="M4.5 12.5l5 5 10-11" fill="none" stroke="#15803d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><p style="font-size:24px;line-height:1.4;color:#3d3d3b">Tamanho do time de BDR/AE e capacidade semanal</p></div>
-<div style="display:flex;flex-direction:row;gap:20px;align-items:center;padding:20px 0px;border-top:1px solid #dcdcd9"><svg role="img" aria-label="Concluir" width="32" height="32" viewBox="0 0 24 24" style="flex:none"><path d="M4.5 12.5l5 5 10-11" fill="none" stroke="#15803d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><p style="font-size:24px;line-height:1.4;color:#3d3d3b">Decisão de CRM e seu dono interno</p></div>
-<div style="display:flex;flex-direction:row;gap:20px;align-items:center;padding:20px 0px;border-top:1px solid #dcdcd9"><svg role="img" aria-label="Concluir" width="32" height="32" viewBox="0 0 24 24" style="flex:none"><path d="M4.5 12.5l5 5 10-11" fill="none" stroke="#15803d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><p style="font-size:24px;line-height:1.4;color:#3d3d3b">Marca de mercado: IBBX, Antiwire ou ambas</p></div>
-<div style="display:flex;flex-direction:row;gap:20px;align-items:center;padding:20px 0px;border-top:1px solid #dcdcd9;border-bottom:1px solid #dcdcd9"><svg role="img" aria-label="Concluir" width="32" height="32" viewBox="0 0 24 24" style="flex:none"><path d="M4.5 12.5l5 5 10-11" fill="none" stroke="#15803d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><p style="font-size:24px;line-height:1.4;color:#3d3d3b">Calendário de PR e agência responsável</p></div>
-<div style="display:flex;flex-direction:row;gap:20px;align-items:center;padding:20px 0px;border-top:1px solid #dcdcd9;border-bottom:1px solid #dcdcd9"><svg role="img" aria-label="Concluir" width="32" height="32" viewBox="0 0 24 24" style="flex:none"><path d="M4.5 12.5l5 5 10-11" fill="none" stroke="#15803d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg><p style="font-size:24px;line-height:1.4;color:#3d3d3b">Cases e logos aprovados; dados dos sensores para o insight</p></div>
+<div style="display:flex;flex-direction:row;gap:20px;align-items:center;padding:20px 0px;border-top:1px solid #dcdcd9"><svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M4.5 12.5l5 5 10-11"/></svg><p style="font-size:24px;line-height:1.4;color:#3d3d3b">Aceite da proposta e escolha do cenário de media buy</p></div>
+<div style="display:flex;flex-direction:row;gap:20px;align-items:center;padding:20px 0px;border-top:1px solid #dcdcd9"><svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M4.5 12.5l5 5 10-11"/></svg><p style="font-size:24px;line-height:1.4;color:#3d3d3b">Preço de referência do piloto, mesmo provisório</p></div>
+<div style="display:flex;flex-direction:row;gap:20px;align-items:center;padding:20px 0px;border-top:1px solid #dcdcd9"><svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M4.5 12.5l5 5 10-11"/></svg><p style="font-size:24px;line-height:1.4;color:#3d3d3b">Acessos: domínio, site, LinkedIn da empresa e pagamento</p></div>
+<div style="display:flex;flex-direction:row;gap:20px;align-items:center;padding:20px 0px;border-top:1px solid #dcdcd9"><svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M4.5 12.5l5 5 10-11"/></svg><p style="font-size:24px;line-height:1.4;color:#3d3d3b">Tamanho do time de BDR/AE e capacidade semanal</p></div>
+<div style="display:flex;flex-direction:row;gap:20px;align-items:center;padding:20px 0px;border-top:1px solid #dcdcd9"><svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M4.5 12.5l5 5 10-11"/></svg><p style="font-size:24px;line-height:1.4;color:#3d3d3b">Decisão de CRM e seu dono interno</p></div>
+<div style="display:flex;flex-direction:row;gap:20px;align-items:center;padding:20px 0px;border-top:1px solid #dcdcd9"><svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M4.5 12.5l5 5 10-11"/></svg><p style="font-size:24px;line-height:1.4;color:#3d3d3b">Marca de mercado: IBBX, Antiwire ou ambas</p></div>
+<div style="display:flex;flex-direction:row;gap:20px;align-items:center;padding:20px 0px;border-top:1px solid #dcdcd9;border-bottom:1px solid #dcdcd9"><svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M4.5 12.5l5 5 10-11"/></svg><p style="font-size:24px;line-height:1.4;color:#3d3d3b">Calendário de PR e agência responsável</p></div>
+<div style="display:flex;flex-direction:row;gap:20px;align-items:center;padding:20px 0px;border-top:1px solid #dcdcd9;border-bottom:1px solid #dcdcd9"><svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M4.5 12.5l5 5 10-11"/></svg><p style="font-size:24px;line-height:1.4;color:#3d3d3b">Cases e logos aprovados; dados dos sensores para o insight</p></div>
 </div>
 <div style="position:absolute;left:128px;right:128px;bottom:64px;display:flex;flex-direction:row;justify-content:space-between"><p style="font-size:24px;color:#9a9a97">AdRoq · Proposta de mídia paga digital · IBBX</p><p style="font-size:24px;color:#9a9a97">18</p></div>
 
@@ -703,7 +713,7 @@ body.idle #hint{opacity:0}
     n=Math.max(0,Math.min(N-1,n));
     slides[i].classList.remove('active');slides[i].setAttribute('aria-hidden','true');
     i=n;
-    slides[i].classList.add('active');slides[i].removeAttribute('aria-hidden');
+    slides[i].classList.add('active');slides[i].removeAttribute('aria-hidden');replay(slides[i]);
     $('count').textContent=(i+1)+' / '+N;
     $('progress').style.width=((i+1)/N*100)+'%';
     $('notesText').textContent=slides[i].dataset.notes||'Sem notas para este slide.';
@@ -714,6 +724,8 @@ body.idle #hint{opacity:0}
     if(push!==false){try{history.replaceState(null,'','#'+(i+1))}catch(e){}}
   }
   slides.forEach(s=>s.setAttribute('aria-hidden','true'));
+  document.querySelectorAll('[data-a]').forEach(e=>e.style.setProperty('--a',e.dataset.a));
+  function replay(s){s.querySelectorAll('[data-a]').forEach(e=>{e.style.animation='none';void e.offsetWidth;e.style.animation=''})}
   const fromHash=parseInt((location.hash||'').slice(1),10);
   slides[0].classList.add('active');
   go(isNaN(fromHash)?0:fromHash-1,false);
